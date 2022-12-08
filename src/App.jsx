@@ -5,11 +5,12 @@ import { useState } from 'react'
 
 function App() {
   const [currentUser] = useState(data.currentUser)
+  const [comments, setComments] = useState(data.comments)
   return (
-    <div className="container">
-      {data.comments.map(comment => <Comment data={comment} key={comment.id} type="comment" currentUser={currentUser} />)}
-      <ReplyForm currentUser={currentUser} type="comment" />
-    </div>
+    < div className="container" >
+      {comments.map(comment => <Comment data={comment} key={comment.id} type="comment" currentUser={currentUser} setComments={setComments} comments={comments} parentId={comment.id} />)}
+      < ReplyForm currentUser={currentUser} type="comment" comments={comments} parentId={""} setComments={setComments} />
+    </div >
   )
 }
 
